@@ -5,7 +5,8 @@ const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
-const homeRouter = require("./routes/home")
+const homeRouter = require("./routes/home");
+const usersRouter = require("./routes/users"); 
 
 const app = express()
 
@@ -31,6 +32,6 @@ app.use(
   })
 )
 
-app.use("/", homeRouter)
-
+// route setup
+app.use("/users", usersRouter);
 module.exports = app;
