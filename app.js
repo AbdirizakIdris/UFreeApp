@@ -35,8 +35,9 @@ app.use(
 )
 
 // route setup
+app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter)
-// app.use("/", homeRouter)
+
 
 module.exports = app;
