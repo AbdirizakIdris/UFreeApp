@@ -33,5 +33,7 @@ app.use(
 )
 
 // route setup
+app.use("/", homeRouter);
 app.use("/users", usersRouter);
+
 module.exports = app;

@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  height: 2rem;
+  background: #ccc;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+}
+
+.links li {
+  list-style-type: none;
+  margin: 7px;
+}
+.links li a {
+  text-decoration: none;
+  color: #000;
+}
