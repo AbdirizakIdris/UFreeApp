@@ -32,3 +32,5 @@ app.use(
 )
 
 app.use("/", homeRouter)
+
+module.exports = app;
