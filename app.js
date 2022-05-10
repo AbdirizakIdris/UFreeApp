@@ -31,6 +31,12 @@ app.use(
   })
 )
 
+<<<<<<< Updated upstream
 app.use("/", homeRouter)
 
+=======
+// route setup
+app.use("/", homeRouter);
+app.use("/users", usersRouter);
+>>>>>>> Stashed changes
 module.exports = app;
