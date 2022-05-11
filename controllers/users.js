@@ -10,7 +10,7 @@ const UsersController = {
     //   const email = req.body.email;
 
       await user.save()
-      res.status(210).redirect("/")
+      res.status(210).redirect("/sessions/new")
   }
 
 };
