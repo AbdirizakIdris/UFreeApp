@@ -5,7 +5,7 @@ const UsersController = require("../controllers/users");
 
 router.get("/new", UsersController.New);
 router.post("/", UsersController.Create);
-// router.get("/personal-page", UsersController.Profile);
+router.get("/personal-page", UsersController.Personal);
 
 
 module.exports = router;
