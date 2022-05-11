@@ -5,7 +5,6 @@ const methodOverride = require("method-override");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 
-
 const homeRouter = require("./routes/home");
 const usersRouter = require("./routes/users"); 
 const sessionsRouter = require("./routes/sessions")
