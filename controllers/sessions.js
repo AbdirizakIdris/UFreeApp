@@ -12,7 +12,7 @@ const SessionsController = {
 
       User.findOne({ email: email }).then((user) => {
           req.session.user = user;
-          res.redirect("/personal-page");
+          res.redirect("/users/personal-page");
         });
     },
 }     

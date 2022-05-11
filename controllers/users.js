@@ -11,8 +11,10 @@ const UsersController = {
 
       await user.save()
       res.status(210).redirect("/sessions/new")
+  },
+  Personal: (req, res) => {
+    res.render("users/personal-page", {targetUser: req.session.user});
   }
-
 };
 
 module.exports= UsersController;
