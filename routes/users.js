@@ -8,5 +8,7 @@ router.post("/", UsersController.Create);
 router.get("/personal-page", UsersController.Personal);
 router.post("/personal-page", UsersController.AddAFriend);
 router.get("/personal-page/all-users", UsersController.AddAFriend);
+router.post("/personal-page", UsersController.CreateAGroup);
+router.get("/personal-page/create-a-group", UsersController.CreateAGroup);
 
 module.exports = router;
