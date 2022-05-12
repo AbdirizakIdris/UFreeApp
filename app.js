@@ -9,6 +9,7 @@ const path = require("path");
 const homeRouter = require("./routes/home");
 const usersRouter = require("./routes/users"); 
 const sessionsRouter = require("./routes/sessions")
+const addFriendRouter = require("./routes/addfriend")
 
 const app = express()
 
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use("/sessions", sessionsRouter)
+app.use("/addfriend", addFriendRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
