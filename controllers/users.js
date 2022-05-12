@@ -26,6 +26,12 @@ const UsersController = {
     res.render("users/alluserspage");
   },
 
+  CreateAGroup(req, res) {
+    res.render("users/createagroup");
+  },
+
+
+
 };
 
 module.exports= UsersController;
