@@ -20,7 +20,12 @@ const UsersController = {
   },
   Personal: (req, res) => {
     res.render("users/personal-page", {targetUser: req.session.user});
-  }
+  },
+
+  AddAFriend(req, res) {
+    res.render("users/alluserspage");
+  },
+
 };
 
 module.exports= UsersController;
