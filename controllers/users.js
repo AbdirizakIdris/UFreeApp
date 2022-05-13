@@ -22,14 +22,13 @@ const UsersController = {
     res.render("users/personal-page", {targetUser: req.session.user});
   },
 
-  AddAFriend(req, res) {
+  AddAFriend: (req, res) => {
     res.render("users/alluserspage");
   },
 
-  CreateAGroup(req, res) {
+  NewGroup: (req, res) => {
     res.render("users/createagroup");
   },
-
 
 
 };
