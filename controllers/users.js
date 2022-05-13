@@ -30,7 +30,6 @@ const UsersController = {
     res.render("users/createagroup");
   },
 
-
 };
 
 module.exports= UsersController;
