@@ -33,19 +33,18 @@ const UsersController = {
     res.render("groups/new", {});
 },
 
-async CreateGroup(req, res){
-    User.findOne({email: req.session.user.email}, (user) => {
-      console.log( "--------------")
-      console.log(req.body.groupName)
-      console.log( "--------------")
-      console.log(req.session.user.email)
-      console.log( "--------------")
+CreateGroup: async (req, res) => {
+    User.findOne({email: req.session.user.email}, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      
       user.groups.push(req.body.groupName);
       user.save((err) => {
         if (err) {
           throw err;
         }
-        res.status(210).redirect("users/personal-page")
+        res.status(210).redirect("/users/personal-page")
       });
     })
 }
