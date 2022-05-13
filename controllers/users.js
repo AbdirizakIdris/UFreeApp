@@ -29,8 +29,15 @@ const UsersController = {
   NewGroup: (req, res) => {
     res.render("users/createagroup");
   },
-
-
+  ViewCalendar: (req,res) => {
+    res.render('groups/index')
+  },
+  ViewNextCalendar: (req,res) => {
+    res.render('groups/next-month')
+  },
+  ViewThirdCalendar: (req,res) => {
+    res.render('groups/third-month')
+  },
 };
 
 module.exports= UsersController;
