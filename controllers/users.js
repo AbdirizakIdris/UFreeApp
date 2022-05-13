@@ -47,8 +47,7 @@ const UsersController = {
         res.status(210).redirect("/users/personal-page")
       });
     })
-  } 
- },
+  }, 
   ViewCalendar: (req,res) => {
     res.render('groups/index')
   },
