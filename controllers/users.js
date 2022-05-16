@@ -25,8 +25,7 @@ const UsersController = {
     const friendsList = targetUser.friends;
     
     for (let i = 0 ; i < friendsList.length ; i++) {
-      friend = await User.findOne({ email: friendsList[i] })
-      console.log(friend.firstName);
+      const friend = await User.findOne({ email: friendsList[i] })
       
       let friendFullName = `${friend.firstName} ${friend.lastName}`;
 
