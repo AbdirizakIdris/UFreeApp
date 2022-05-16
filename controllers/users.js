@@ -18,8 +18,24 @@ const UsersController = {
       await user.save()
       res.status(210).redirect("/sessions/new")
   },
-  Personal: (req, res) => {
-    res.render("users/personal-page", {targetUser: req.session.user});
+  Personal: async (req, res) => {
+    
+    const targetUser = await User.findOne({ email: req.session.user.email }); //targetUser = User currently logged in
+    let friendsNames = [];
+    const friendsList = targetUser.friends;
+    
+    for (let i = 0 ; i < friendsList.length ; i++) {
+      friend = await User.findOne({ email: friendsList[i] })
+      console.log(friend.firstName);
+      
+      let friendFullName = `${friend.firstName} ${friend.lastName}`;
+
+      
+      friendsNames.push(friendFullName);
+    }
+    
+    res.render("users/personal-page", { friends: friendsNames.reverse(), targetUser: req.session.user});
+    
   },
 
   AddAFriend: (req, res) => {
