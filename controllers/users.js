@@ -32,7 +32,6 @@ const UsersController = {
   NewGroup: (req, res) => {
     res.render("groups/new", {});
   },
-
   CreateGroup: async (req, res) => {
     User.findOne({email: req.session.user.email}, (err, user) => {
       if (err) {
