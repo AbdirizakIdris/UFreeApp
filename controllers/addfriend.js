@@ -9,23 +9,23 @@ const AddFriendController = {
 
   Add: (req, res) => {
 
-    User.findOne({email: req.session.user.email}, (err, user) => {
+    User.findOne({ email: req.session.user.email }, (err, user) => {  //finding a field on the database with the label "email"
       if (err) {
         throw err;
       }
 
       const newFriend = req.body.selectedFriend;
-      const thisUser = req.session.user
+      const thisUser = req.session.user  
 
      if (!(thisUser.friends.includes(newFriend))) {
-        user.friends.push(newFriend); 
+        user.friends.push(newFriend);
 
         user.save((err) => {
           if (err) {
             throw err;
           }
 
-          User.findOne({friend: req.body.selectedFriend}, (err, user) => {
+          User.findOne({email: req.body.selectedFriend}, (err, user) => {
             if (err) {
               throw err;
             }
@@ -46,12 +46,12 @@ const AddFriendController = {
 
   AddFriendtoGroup: async (req, res) => {
 
-    const targetUser = await User.findOne({email: req.session.user.email}); //targetUser = User currently logged in
+    const targetUser = await User.findOne({ email: req.session.user.email }); //targetUser = User currently logged in
     let friendsNames = [];
     const friendsList = targetUser.friends;
 
     for (let i = 0 ; i < friendsList.length ; i++) {
-      const friend = await User.findOne({email: friendsList[i]})
+      const friend = await User.findOne({ email: friendsList[i] })
 
       let friendFullName = `${friend.firstName} ${friend.lastName}`;
 
