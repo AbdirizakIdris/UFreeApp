@@ -29,9 +29,11 @@ const UsersController = {
   // NewGroup: (req, res) => {
   //   res.render("users/createagroup");
   // },
+
   NewGroup: (req, res) => {
     res.render("groups/new", {});
   },
+
   CreateGroup: async (req, res) => {
     User.findOne({email: req.session.user.email}, (err, user) => {
       if (err) {
@@ -39,23 +41,28 @@ const UsersController = {
       }
       
       user.groups.push(req.body.groupName);
+      
       user.save((err) => {
         if (err) {
           throw err;
         }
-        res.status(210).redirect("/users/personal-page")
+        res.status(210).redirect("/addfriend/add-friend-to-group")
       });
     })
   }, 
+
   ViewCalendar: (req,res) => {
     res.render('groups/index')
   },
+
   ViewNextCalendar: (req,res) => {
     res.render('groups/next-month')
   },
+
   ViewThirdCalendar: (req,res) => {
     res.render('groups/third-month')
   },
+
 };
 
 module.exports= UsersController;

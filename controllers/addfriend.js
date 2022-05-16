@@ -44,7 +44,7 @@ const AddFriendController = {
     });
   },
 
-  AddFriendtoGroup: async (req, res) => {
+  ShowFriends: async (req, res) => {
 
     const targetUser = await User.findOne({ email: req.session.user.email }); //targetUser = User currently logged in
     let friendsNames = [];
@@ -57,10 +57,43 @@ const AddFriendController = {
 
       friendsNames.push(friendFullName);
     }
-   
+
     res.render("addfriend/add-friend-to-group", { friends: friendsNames.reverse() });
   },
 
+  AddFriendToGroup: (req, res) => {
+
+    User.findOne({email: req.session.user.email}, (err, user) => {
+
+    const group = user.groups[0]
+
+      User.findOne({email: req.body.groupMember}, (err, user) => {
+        if (err) {
+          throw err;
+        }
+  
+        console.log("-----This is req.body-----")
+        console.log(req.body)
+        console.log("-----This is user-----")
+        console.log(user)
+        console.log("-----This is user.groups-----")
+        console.log(user.groups)
+        console.log("----This is req.session.user------")
+        console.log(req.session.user)
+        console.log("----------")
+  
+        user.groups.push(group);
+        
+        user.save((err) => {
+          if (err) {
+            throw err;
+          }
+
+        res.status(201).redirect("/addfriend/add-friend-to-group");
+        }); 
+      });
+    });
+  },
 };
 
 module.exports = AddFriendController;
