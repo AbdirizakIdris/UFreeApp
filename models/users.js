@@ -8,11 +8,12 @@ const UserSchema = new mongoose.Schema({
     friends: [{
         type: String, //friends will be an array of strings
     }],
-    groups: String,
+    groups: [{
+        type: String, //groups will be an array of strings
+    }],
     dateAvailability: [{
-        type: String, 
-    }], 
-
+        type: String, // this will be an array of dates in strings
+    }],
 });
 
 const User = mongoose.model("User", UserSchema);

@@ -11,6 +11,7 @@ const usersRouter = require("./routes/users");
 const sessionsRouter = require("./routes/sessions")
 const addFriendRouter = require("./routes/addfriend")
 
+
 const app = express()
 
 app.set("views", path.join(__dirname, "/views"))

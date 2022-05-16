@@ -26,10 +26,36 @@ const UsersController = {
     res.render("users/alluserspage");
   },
 
+  // NewGroup: (req, res) => {
+  //   res.render("users/createagroup");
+  // },
   NewGroup: (req, res) => {
-    res.render("users/createagroup");
+    res.render("groups/new", {});
   },
-
+  CreateGroup: async (req, res) => {
+    User.findOne({email: req.session.user.email}, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      
+      user.groups.push(req.body.groupName);
+      user.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(210).redirect("/users/personal-page")
+      });
+    })
+  }, 
+  ViewCalendar: (req,res) => {
+    res.render('groups/index')
+  },
+  ViewNextCalendar: (req,res) => {
+    res.render('groups/next-month')
+  },
+  ViewThirdCalendar: (req,res) => {
+    res.render('groups/third-month')
+  },
 };
 
 module.exports= UsersController;
