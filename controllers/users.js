@@ -47,6 +47,26 @@ const UsersController = {
         res.status(210).redirect("/users/personal-page")
       });
     })
+  },
+  BookDay: async(req) => {
+    User.findOne({email: req.session.user.email}, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      
+      console.log("======= ID =======")
+      console.log(req.body.dateAvailability)
+      console.log("==================")
+
+
+      user.dateAvailability.push(req.body.dateAvailability);
+      user.save((err) => {
+        if (err) {
+          throw err;
+        }
+        // res.status(210).redirect("/users/groups")
+      });
+    })
   }, 
   ViewCalendar: (req,res) => {
     res.render('groups/index')
