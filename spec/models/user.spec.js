@@ -57,9 +57,27 @@ it("can save a user", (done) => {
         done();
       });
     });
-  });
+});
 
 
+it("initially has an empty group []", () => {
+    const user = new User ();
+    expect(user.groups).toEqual([]);
+});
+
+it("has a list of groups in reserve", () => {
+    const user = new User ( {
+        groups: ("The Family", "The girls", "test Group")
+    });
+    expect(user.groups).toContain("test Group","The girls", "The Family");
+});
+
+it("displays a list of user's friends in reverse", () => {
+    const user = new User ( {
+        friends: ("Michalina", "Idris", "Kafia", "Chalyssa", "Julian", "Rhys")
+    });
+    expect(user.friends).toContain("Rhys", "Julian", "Chalyssa", "Kafia", "Idris", "Michalina");
+});
 
 
   
