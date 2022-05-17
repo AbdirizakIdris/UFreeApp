@@ -32,10 +32,15 @@ const UsersController = {
       
       friendsNames.push(friendFullName);
     }
-    
-    res.render("users/personal-page", { friends: friendsNames.reverse(), targetUser: req.session.user});
-    
-  },
+
+    const groupsList = targetUser.groups;
+    for (let i = 0 ; i < groupsList.length ; i++) {
+      const group = await User.findOne({ email: groupsList[i] })
+     console.group(group)
+    }
+    res.render("users/personal-page", { friends: friendsNames.reverse(), groups: groupsList.reverse(), targetUser: req.session.user});
+
+   },
 
   AddAFriend: (req, res) => {
     res.render("users/alluserspage");

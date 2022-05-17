@@ -14,7 +14,12 @@
 </div>
 
 <div class="groupContainer">
-<h3>Your Groups</h3>
+<h3>Your Groups:</h3>
+<ul reversed class="all-users">
+  {{#each groups}}
+   <li> Name: {{this}} </li>
+  {{/each}}
+  </ul>
 </div>
 
 <div class="friends">
