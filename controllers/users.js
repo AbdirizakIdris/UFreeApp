@@ -34,9 +34,7 @@ const UsersController = {
     }
 
     const groupsList = targetUser.groups;
-    console.log("==============")
-    console.log(groupsList)
-    console.log("==============")
+
     for (let i = 0 ; i < groupsList.length ; i++) {
       const group = await User.findOne({ email: groupsList[i] })
      console.group(group)
@@ -48,10 +46,6 @@ const UsersController = {
   AddAFriend: (req, res) => {
     res.render("users/alluserspage");
   },
-
-  // NewGroup: (req, res) => {
-  //   res.render("users/createagroup");
-  // },
 
   NewGroup: (req, res) => {
     res.render("groups/new", {});
