@@ -58,7 +58,7 @@ const AddFriendController = {
       friendsNames.push(friendFullName);
     }
 
-    res.render("addfriend/add-friend-to-group", { friends: friendsNames.reverse() });
+    res.render("addfriend/add-friend-to-group", { friends: friendsNames.reverse(), friendsEmails: targetUser.friends.reverse(), groupName: targetUser.groups[0] });
   },
 
   AddFriendToGroup: (req, res) => {
@@ -71,16 +71,6 @@ const AddFriendController = {
         if (err) {
           throw err;
         }
-  
-        console.log("-----This is req.body-----")
-        console.log(req.body)
-        console.log("-----This is user-----")
-        console.log(user)
-        console.log("-----This is user.groups-----")
-        console.log(user.groups)
-        console.log("----This is req.session.user------")
-        console.log(req.session.user)
-        console.log("----------")
   
         user.groups.push(group);
         
