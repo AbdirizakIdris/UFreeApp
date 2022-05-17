@@ -8,6 +8,26 @@
 
   <body>
     <section>
+      {{#if user}}
+      <nav>
+        <h3 id="appTitle">UFree</h3>
+          <ul>
+            <li>
+              <div>
+                <form action="/sessions?_method=DELETE" method="post">
+                  <input type="submit" name="logOut" id="logOut" value="Log Out">
+                </form>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      {{/if}}
+    </section>
+    {{{body}}}
+  </body>
+
+  {{!-- <body>
+    <section>
       <nav>
         <h3 id="appTitle">UFree</h3>
           <ul>
@@ -30,6 +50,6 @@
     </section>
 
     {{{body}}}
-  </body>
+  </body> --}}
 
 </html>
