@@ -59,7 +59,6 @@ it("can save a user", (done) => {
     });
 });
 
-
 it("initially has an empty group []", () => {
     const user = new User ();
     expect(user.groups).toEqual([]);
@@ -78,9 +77,3 @@ it("displays a list of user's friends in reverse", () => {
     });
     expect(user.friends).toContain("Rhys", "Julian", "Chalyssa", "Kafia", "Idris", "Michalina");
 });
-
-
-  
-
-
-
