@@ -18,9 +18,29 @@ const UsersController = {
       await user.save()
       res.status(210).redirect("/sessions/new")
   },
-  Personal: (req, res) => {
-    res.render("users/personal-page", {targetUser: req.session.user});
-  },
+  Personal: async (req, res) => {
+    
+    const targetUser = await User.findOne({ email: req.session.user.email }); //targetUser = User currently logged in
+    let friendsNames = [];
+    const friendsList = targetUser.friends;
+    
+    for (let i = 0 ; i < friendsList.length ; i++) {
+      const friend = await User.findOne({ email: friendsList[i] })
+      
+      let friendFullName = `${friend.firstName} ${friend.lastName}`;
+
+      
+      friendsNames.push(friendFullName);
+    }
+
+    const groupsList = targetUser.groups;
+    for (let i = 0 ; i < groupsList.length ; i++) {
+      const group = await User.findOne({ email: groupsList[i] })
+     console.group(group)
+    }
+    res.render("users/personal-page", { friends: friendsNames.reverse(), groups: groupsList.reverse(), targetUser: req.session.user});
+
+   },
 
   AddAFriend: (req, res) => {
     res.render("users/alluserspage");
@@ -29,6 +49,7 @@ const UsersController = {
   // NewGroup: (req, res) => {
   //   res.render("users/createagroup");
   // },
+
   NewGroup: (req, res) => {
     res.render("groups/new", {});
   },
@@ -40,11 +61,12 @@ const UsersController = {
       }
       
       user.groups.push(req.body.groupName);
+      
       user.save((err) => {
         if (err) {
           throw err;
         }
-        res.status(210).redirect("/users/personal-page")
+        res.status(210).redirect("/addfriend/add-friend-to-group")
       });
     })
   },
@@ -63,9 +85,11 @@ const UsersController = {
       });
     })
   }, 
+
   ViewCalendar: (req,res) => {
     res.render('groups/index')
   },
+
 };
 
 module.exports= UsersController;

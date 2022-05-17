@@ -1,0 +1,26 @@
+<h1>Your "{{groupName}}" group</h1>
+
+<h2>Add friends to your group!</h2>
+
+<div>
+  <p>Friends:</p>
+  <ul reversed class="all-friends">
+    {{#each friends}}
+      <li>{{this}}</li>
+    {{/each}}
+    {{#each friendsEmails}}
+      <li>
+        <form id="addFriend" action="/addfriend/add-friend-to-group" method="post">
+        <input type="hidden" id="groupMember" name="groupMember" value="{{this}}">
+        <input type="submit" value="+">
+        </form>
+      </li>
+    {{/each}} 
+  </ul>
+</div>
+</br>
+<div class="linkContainer">
+  <button onclick="window.location.href = '/'">See Group Page</button>
+  <button onclick="window.location.href = '/users/personal-page'">Back to Personal Page</button>
+</div>
+

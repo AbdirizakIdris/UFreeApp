@@ -9,9 +9,24 @@
   <button onclick="window.location.href = '/addfriend'">Add a Friend</button>
   <button onclick="window.location.href = '/users/personal-page/create-a-group'">Create a Group</button>
   {{!-- <button type="button">Edit Profie</button> --}}
+  <button onclick="window.location.href = '/addfriend/add-friend-to-group'">Add Friend to group</button>
   <button onclick="window.location.href = '/users/groups'">Group Calendar</button>
 </div>
 
 <div class="groupContainer">
-<h3>Your Groups</h3>
+<h3>Your Groups:</h3>
+<ul reversed class="all-users">
+  {{#each groups}}
+   <li> Name: {{this}} </li>
+  {{/each}}
+  </ul>
 </div>
+
+<div class="friends">
+<h3>Your friends:</h3>
+<ul reversed class="all-users">
+  {{#each friends}}
+   <li> Name: {{this}} </li>
+  {{/each}}
+  </ul>
+  </div>
