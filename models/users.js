@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
         type: String, //friends will be an array of strings
     }],
     groups: [{
-        type: String, //groups will be an array of strings
+        type: String,
     }],
     dateAvailability: [{
         type: String, // this will be an array of dates in strings

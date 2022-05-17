@@ -1,18 +1,22 @@
-<h1>Your group page</h1>
+<h1>Your "{{groupName}}" group</h1>
 
 <h2>Add friends to your group!</h2>
 
-<p>Friends:</p>
-<ul reversed class="all-friends">
-  {{#each friends}}
-  <li>{{this}}
-    <form id="addFriendToGroup" action="/addfriend/add" method="post">
-      <input type="hidden" id="" name="" value="{{this.email}}">
-      <input type="submit" value="+">
-    </form>
-  </li>
-  {{/each}}
-</ul>
+<div>
+  <p>Friends:</p>
+  <ul reversed class="all-friends">
+    {{#each friends}}
+      <li>{{this}}</li>
+    {{/each}}
+    {{#each friendsEmails}}
+      <li>
+        <form id="addFriend" action="/addfriend/add-friend-to-group" method="post">
+        <input type="hidden" id="groupMember" name="groupMember" value="{{this}}">
+        <input type="submit" value="+">
+        </form>
+      </li>
+    {{/each}} 
+  </ul>
 </div>
 </br>
 <div class="linkContainer">
