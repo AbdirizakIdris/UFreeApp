@@ -34,6 +34,9 @@ const UsersController = {
     }
 
     const groupsList = targetUser.groups;
+    console.log("==============")
+    console.log(groupsList)
+    console.log("==============")
     for (let i = 0 ; i < groupsList.length ; i++) {
       const group = await User.findOne({ email: groupsList[i] })
      console.group(group)
