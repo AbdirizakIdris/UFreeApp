@@ -48,34 +48,23 @@ const UsersController = {
       });
     })
   },
-  BookDay: async(req) => {
+  BookDay: async(req,res) => {
     User.findOne({email: req.session.user.email}, (err, user) => {
       if (err) {
         throw err;
       }
       
-      console.log("======= ID =======")
-      console.log(req.body.dateAvailability)
-      console.log("==================")
-
-
       user.dateAvailability.push(req.body.dateAvailability);
       user.save((err) => {
         if (err) {
           throw err;
         }
-        // res.status(210).redirect("/users/groups")
+        res.status(210).redirect("/users/groups")
       });
     })
   }, 
   ViewCalendar: (req,res) => {
     res.render('groups/index')
-  },
-  ViewNextCalendar: (req,res) => {
-    res.render('groups/next-month')
-  },
-  ViewThirdCalendar: (req,res) => {
-    res.render('groups/third-month')
   },
 };
 
