@@ -69,18 +69,25 @@ const UsersController = {
         res.status(210).redirect("/addfriend/add-friend-to-group")
       });
     })
+  },
+  BookDay: async(req,res) => {
+    User.findOne({email: req.session.user.email}, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      
+      user.dateAvailability.push(req.body.dateAvailability);
+      user.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(210).redirect("/users/groups")
+      });
+    })
   }, 
 
   ViewCalendar: (req,res) => {
     res.render('groups/index')
-  },
-
-  ViewNextCalendar: (req,res) => {
-    res.render('groups/next-month')
-  },
-
-  ViewThirdCalendar: (req,res) => {
-    res.render('groups/third-month')
   },
 
 };

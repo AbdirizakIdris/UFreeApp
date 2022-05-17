@@ -11,7 +11,6 @@ router.get("/personal-page", UsersController.Personal);
 router.get("/personal-page/create-a-group", UsersController.NewGroup);
 router.post("/personal-page", UsersController.CreateGroup);
 router.get('/groups', UsersController.ViewCalendar);
-router.get('/groups/next-month', UsersController.ViewNextCalendar);
-router.get('/groups/third-month', UsersController.ViewThirdCalendar);
+router.post('/groups', UsersController.BookDay);
 
 module.exports = router;
