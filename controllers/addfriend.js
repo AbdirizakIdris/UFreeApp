@@ -36,6 +36,7 @@ const AddFriendController = {
               if (err) {
                 throw err;
               }
+
               res.status(201).redirect("/addFriend");
             });
           });
@@ -72,15 +73,17 @@ const AddFriendController = {
           throw err;
         }
   
-        user.groups.push(group);
-        
-        user.save((err) => {
-          if (err) {
-            throw err;
-          }
+        if (!(user.groups.includes(group))) {
+          user.groups.push(group);
 
-        res.status(201).redirect("/addfriend/add-friend-to-group");
-        }); 
+          user.save((err) => {
+            if (err) {
+              throw err;
+            }
+
+            res.status(201).redirect("/addfriend/add-friend-to-group");
+          });
+        }
       });
     });
   },
