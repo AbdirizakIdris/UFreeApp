@@ -67,10 +67,15 @@ function load() {
         daySquare.id = 'currentDay';
       }
 
+      // right now title looks like `i am free`
+      // make it look like `username1\notheruser\nhehehe`
+      // eventDiv.innerText = "username1\notheruser\nhehehe";
+
       if (eventForDay) {
         const eventDiv = document.createElement('div');
         eventDiv.classList.add('event');
-        eventDiv.innerText = eventForDay.title;
+        eventDiv.innerText = eventForDay.title + " is free!";
+        // eventDiv.innerText = "Kafiyah\nIdris\nRhyss";
         daySquare.appendChild(eventDiv);
       }
 

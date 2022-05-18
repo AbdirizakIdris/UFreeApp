@@ -84,7 +84,7 @@ const UsersController = {
   }, 
 
   ViewCalendar: (req,res) => {
-    res.render('groups/index')
+    res.render('groups/index', { username: req.session.user.firstName })
   },
 
 };
