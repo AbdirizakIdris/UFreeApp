@@ -26,7 +26,7 @@ const AddFriendController = {
       const newFriend = req.body.selectedFriend;
       const thisUser = req.session.user  
 
-     if (!(thisUser.friends.includes(newFriend))) {
+      if (!(thisUser.friends.includes(newFriend))) {
         user.friends.push(newFriend);
 
         user.save((err) => {

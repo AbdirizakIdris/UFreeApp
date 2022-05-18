@@ -37,11 +37,11 @@ const UsersController = {
 
     for (let i = 0 ; i < groupsList.length ; i++) {
       const group = await User.findOne({ email: groupsList[i] })
-     console.group(group)
+      console.log(group)
     }
     res.render("users/personal-page", { friends: friendsNames.reverse(), groups: groupsList.reverse(), targetUser: req.session.user});
 
-   },
+  },
 
   AddAFriend: (req, res) => {
     res.render("users/alluserspage");
@@ -83,10 +83,19 @@ const UsersController = {
     })
   }, 
 
-  ViewCalendar: (req,res) => {
-    res.render('groups/index')
-  },
+  ViewCalendar: async (req,res) => {
+    const targetUser = req.session.user
+    let group = targetUser.groups[0]
+    let members = []
 
+    User.find({groups: group}, (err, user) => {    
+      user.forEach((member) => {
+        members.push(member.firstName)  
+      })
+    })
+
+    res.render('groups/index', { memberList: members })
+  },
 };
 
-module.exports= UsersController;
+module.exports = UsersController;
