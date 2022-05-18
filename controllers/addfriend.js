@@ -3,8 +3,17 @@ const User = require("../models/users");
 const AddFriendController = {
   Index: async (req, res) => {
     const allUsers = await User.find();
+    const currentUser = req.session.user;
+    const userChecker = (user) => {
+      if (!(currentUser.email === user.email)) {
+        return user
+      }
+    };
+    
+    const leUsers = allUsers.reverse();
+    const everyUser = leUsers.filter(element => userChecker(element));
 
-    res.render("addfriend/index", { users: allUsers.reverse() });
+    res.render("addfriend/index", {checkEveryUser: everyUser });
   },
 
   Add: (req, res) => {
