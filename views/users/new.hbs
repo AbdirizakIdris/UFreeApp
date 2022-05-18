@@ -1,5 +1,5 @@
 <h1>Welcome to UFree!</h1>
-
+<div id="error_box"></div>
 <form id="new-user-form" action="/users" method="post">
 <h2>Sign up below:</h2><br/>
   <p>
@@ -22,6 +22,31 @@
     <input required id="confirmPassword" type="password" name="confirmPassword" value="">
     </br>
     <input class="submit-button" id="submit" type="submit" value="Submit">
+   
   </p>
 </form>
+ </div>
+
+<script>
+      const form = document.getElementById('new-user-form');
+      form.addEventListener('submit',function (e){
+        if(form.email.value !== form.confirmEmail.value ){
+          e.preventDefault()
+        document.getElementById('error_box').innerText = "Emails don't match, please correct it"
+      }
+        if(form.password.value !== form.confirmPassword.value ){
+          e.preventDefault()
+          document.getElementById('error_box').innerText = "Passwords don't match, please correct it"
+        }
+          if(form.email.value !== form.confirmEmail.value && form.password.value !== form.confirmPassword.value ){
+          e.preventDefault()
+          document.getElementById('error_box').innerText = "Both Emails and both Passwords don't match, please correct it"
+          }
+      })
+      
+          if (window.location.hash == "#repeatedemail")
+          document.getElementById('error_box').innerText = "Account already exists"
+</script>
+
+
 

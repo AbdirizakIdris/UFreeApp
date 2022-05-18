@@ -12,7 +12,7 @@ const UsersController = {
         return res.redirect("users/new");
       }
       if (await User.exists({email: email})) {
-        return res.redirect("users/new");
+        return res.redirect("users/new#repeatedemail");
       }
 
       await user.save()

@@ -30,3 +30,8 @@ nav {
 li {
   list-style-type: none;
 }
+
+#error_box {
+  padding: 5px;
+  margin:  5px; color: rgba(255, 0, 0, 0.765);
+}
