@@ -10,10 +10,10 @@
     <section>
       {{#if user}}
       <nav>
-        <h3 id="appTitle">UFree</h3>
+        <h3 id="appTitle"> UFree </h3>
           <ul>
             <li>
-              <div>
+             <div class="logOutContainer">
                 <form action="/sessions?_method=DELETE" method="post">
                   <input type="submit" name="logOut" id="logOut" value="Log Out">
                 </form>
@@ -25,31 +25,5 @@
     </section>
     {{{body}}}
   </body>
-
-  {{!-- <body>
-    <section>
-      <nav>
-        <h3 id="appTitle">UFree</h3>
-          <ul>
-            {{#if user}}
-            <li>
-              <div>
-                <form action="/sessions?_method=DELETE" method="post">
-                  <input type="submit" name="logOut" id="logOut" value="Log Out">
-                </form>
-              </div>
-            </li>
-            {{else}}
-            <div class="links">
-              <li><a href="/users/new">Sign Up</a></li>
-              <li><a href="/sessions/new">Log In</a></li>
-            </div>
-            {{/if}}
-          </ul>
-      </nav>
-    </section>
-
-    {{{body}}}
-  </body> --}}
 
 </html>
