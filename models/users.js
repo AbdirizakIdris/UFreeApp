@@ -11,8 +11,11 @@ const UserSchema = new mongoose.Schema({
     groups: [{
         type: String,
     }],
+    // store the data availability as object rather than a string
     dateAvailability: [{
-        type: String, // this will be an array of dates in strings
+        id : {type :  mongoose.Schema.Types.ObjectId},
+        title : {type : String},
+        date : {type : String}
     }],
 });
 
