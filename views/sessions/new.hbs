@@ -1,15 +1,31 @@
-<form id="new-session-form" action="/sessions" method="post">
-    <h2>Sign in below:</h2><br/>
-    <div id="error_box"></div>
-    <label for="email">Email: </label>
-    <input class="sign-up-in-inputs" id="email" type="email" name="email" value="">
-    <label for="password">Password: </label>
-    <input class="sign-up-in-inputs" id="password" type="password" name="password" value="">
-    <input class="submit-button" id="submit" type="submit" value="Submit">
-</form>
+<div class="signUpContainer">
+  <h1>Welcome to UFree!</h1>
+
+  <div class="newSessionForm">
+    <form id="new-session-form" action="/sessions" method="post">
+
+      <div class="signup-page-logo-container">
+        <img class="signup-page-logo" src="https://cdn.discordapp.com/attachments/974629903435702333/976122683446145054/UFree_logo.png" alt="Ufree Logo">
+      </div>
+
+      <h2>Sign in!</h2>
+      <div id="error_box"></div>
+      <div class="formLabels">
+        <input id="email" type="email" name="email" value="" placeholder="Email">
+        <input id="password" type="password" name="password" value="" placeholder="Password">
+      </div>
+      <div>
+        <input class="submit-button" id="submit" type="submit" value="Submit">
+      </div>
+      <a href="/users/new">Sign Up!</a>
+    </form>
+  </div>
+</div>
+
 <script>
   if (window.location.hash == "#bademail")
     document.getElementById('error_box').innerText = "Account not found"
   else if (window.location.hash == "#badpassword")
     document.getElementById('error_box').innerText = "Incorrect Password"
 </script>
+

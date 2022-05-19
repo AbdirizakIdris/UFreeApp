@@ -1,31 +1,35 @@
-<h1>Welcome to UFree!</h1>
-<div id="error_box"></div>
-<form id="new-user-form" action="/users" method="post">
-<h2>Sign up below:</h2><br/>
-  <p>
-    <label for="firstName">First Name:</label>
-    <input required id="firstName" type="string" name="firstName" value="">
-    </br>
-    <label for="lastName">Last Name: </label>
-    <input required id="lastName" type="text" name="lastName" value="">
-    </br>
-    <label for="email">Email: </label>
-    <input required id="email" type="email" name="email" value="">
-    </br>
-    <label for="confirm-email">Confirm Email: </label>
-    <input required id="confirmEmail" type="email" name="confirmEmail" value="">
-    </br>
-    <label for="password">Password: </label>
-    <input required id="password" type="password" name="password" value="">
-    </br>
-    <label for="confirmPassword">Confirm Password: </label>
-    <input required id="confirmPassword" type="password" name="confirmPassword" value="">
-    </br>
-    <input class="submit-button" id="submit" type="submit" value="Submit">
-   
-  </p>
-</form>
- </div>
+<div class="signUpContainer">
+  <h1>Welcome to UFree!</h1>
+
+  <div class="newUserForm">
+    <form id="new-user-form" action="/users" method="post">
+    <div id="error_box"></div>
+    <div class="signup-page-logo-container">
+      <img class="signup-page-logo" src="https://cdn.discordapp.com/attachments/974629903435702333/976122683446145054/UFree_logo.png" alt="Ufree Logo">
+    </div>
+
+    <h2>Sign up!</h2>
+    <div class="formLabels">
+      <div>
+        <input required id="firstName" type="string" name="firstName" value="" placeholder="First name">
+        <input required id="lastName" type="text" name="lastName" value="" placeholder="Last name">
+      </div>
+      <div>
+        <input required id="email" type="email" name="email" value="" placeholder="Email">
+        <input required id="confirmEmail" type="email" name="confirmEmail" value="" placeholder="Confirm email">
+      </div>
+      <div>
+        <input required id="password" type="password" name="password" value="" placeholder="Password">
+        <input required id="confirmPassword" type="password" name="confirmPassword" value="" placeholder="Confirm password">
+      </div>
+    </div>
+      <div>
+        <input class="submit-button" id="submit" type="submit" value="Submit">
+      </div>
+      <a href="/sessions/new">Log in!</a>
+    </form>
+  </div>
+</div>
 
 <script>
       const form = document.getElementById('new-user-form');
@@ -47,6 +51,3 @@
           if (window.location.hash == "#repeatedemail")
           document.getElementById('error_box').innerText = "Account already exists"
 </script>
-
-
-
