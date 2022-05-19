@@ -82,7 +82,6 @@ function load() {
             if (availability.find(x => x.date === dayString)) {
               freeFriends.push(e.name);
             }
-       
       });
       
       if (i - paddingDays === day && nav === 0) {

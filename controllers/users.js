@@ -110,7 +110,7 @@ const UsersController = {
 
     User.find({groups: group}, (err, user) => {    
       user.forEach((member) => {
-        members.push(member.firstName)  
+        members.push(member)  
       })
     })
 

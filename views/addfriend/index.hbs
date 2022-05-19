@@ -1,6 +1,5 @@
-<div>
-<h1>Add your friends!</h1>
-
+<div class="add-friend-container"> 
+  <h2>Add your friends!</h2>
 
 <h2>Potential Friends:</h2>
 <ul reversed class="all-users">
@@ -21,6 +20,31 @@
   <li>Name: {{this.firstName}} {{this.lastName}} </li>
   {{/each}}
 </ul>
+
+  <div class="addFriendPage">
+    <ul reversed class="all-users">
+      {{#each checkEveryUser}}
+      <div class="addFriendCon">
+        <li>{{this.firstName}} {{this.lastName}}</li>
+        <form id="addFriend" action="/addfriend/add" method="post">
+          <input type="hidden" id="selectedFriend" name="selectedFriend" value="{{this.email}}">
+          <div>
+            <button type="submit" class="button-56">Add Friend</button>
+          </div>
+        </form>
+      </div>
+      {{/each}}
+    </ul>
+  </div>
+
+  <div class="linkContainer">
+    <div class="authentication-btn">
+      <button onclick="window.location.href = '/users/personal-page/create-a-group'">Create a Group</button>
+      <button onclick="window.location.href = '/addfriend/add-friend-to-group'">Add Friend to group</button>
+      <button onclick="window.location.href = '/users/personal-page'">Back to Personal Page</button>
+    </div>
+  </div>
+</div>  
 
 <script> 
   let addForms = document.getElementsByClassName('addNewFriend');
@@ -56,12 +80,3 @@
     })
   }
 </script>
-
-</div>
-</br>
-<div class="linkContainer">
-  <button onclick="window.location.href = '/users/personal-page/create-a-group'">Create a Group</button>
-  <button onclick="window.location.href = '/addfriend/add-friend-to-group'">Add Friend to group</button>
-  <button onclick="window.location.href = '/users/personal-page'">Back to Personal Page</button>
-</div>
-

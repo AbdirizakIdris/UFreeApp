@@ -2,11 +2,13 @@
   <link rel="stylesheet" href="/stylesheets/calendar.css">
 </head>
 
-<div id="container">
+<div class="calAndGroupCon">
+  <div class="calenderCon">
+    <div id="calContainer">
       <div id="header">
         <div id="monthDisplay"></div>
         <div>
-          <button id="backButton">Back</button>
+          <button id="backButton">Previous</button>
           <button id="nextButton">Next</button>
         </div>
       </div>
@@ -23,34 +25,48 @@
 
       <div id="calendar"></div>
     </div>
+  </div>
 
-    <div id="newEventModal">
-      <h2>Ufree?</h2>
-      <form id="calendarForm" action="groups" method="post">
-        <input type="hidden" id="eventTitleInput" value="I'm Free"/>
-        <div id="calDate"></div>
-        <button id="saveButton" type="submit">I'm Free!</button>
-        <button id="cancelButton">Cancel</button>
-      </form>
-    </div>
-
-    <div id="deleteEventModal">
-      <h2>Busy?</h2>
-
-      <p id="eventText"></p>
-
-      <button id="deleteButton">Delete</button>
-      <button id="closeButton">Close</button>
-    </div>
-
-    <div id="modalBackDrop"></div>
-
+  <div class="groupAndButtons">
     <div class="listMembers">
+      <h3>Group Members</h3>
       <ul>
         {{#each memberList}}
-          <li>{{this}}</li>
+        <div id="member">
+          <li>{{this.firstName}} {{this.lastName}}</li>
+        </div>
         {{/each}}
       </ul>
     </div>
+
+    <div class="authentication-btn">
+      <div class="linkContainer">
+        <button onclick="window.location.href = '/addfriend/add-friend-to-group'">Add Friend to group</button>
+        <button onclick="window.location.href = '/users/personal-page'">Back to Personal Page</button>
+      </div>
+    </div>  
+  </div> 
+</div>
+
+<div id="newEventModal">
+  <h2>Ufree?</h2>
+  <form id="calendarForm" action="groups" method="post">
+    <input type="hidden" id="eventTitleInput" value="I'm Free"/>
+    <div id="calDate"></div>
+    <button id="saveButton" type="submit">I'm Free!</button>
+    <button id="cancelButton">Cancel</button>
+  </form>
+</div>
+
+<div id="deleteEventModal">
+  <h2>Busy?</h2>
+
+  <p id="eventText"></p>
+
+  <button id="deleteButton">Delete</button>
+  <button id="closeButton">Close</button>
+</div>
+
+    <div id="modalBackDrop"></div>
 
 <script src="/JS/script.js"></script>

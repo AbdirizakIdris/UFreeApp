@@ -11,10 +11,13 @@
     <section>
       {{#if user}}
       <nav>
-        <h3 id="appTitle"> UFree </h3>
+        <a href="/users/personal-page">
+          <h3 id="appTitle">UFree</h3>
+        </a>
+        
           <ul>
             <li>
-             <div class="logOutContainer">
+              <div class="logOutContainer">
                 <form action="/sessions?_method=DELETE" method="post">
                   <input type="submit" name="logOut" id="logOut" value="Log Out">
                 </form>
