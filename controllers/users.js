@@ -12,7 +12,7 @@ const UsersController = {
         return res.redirect("users/new");
       }
       if (await User.exists({email: email})) {
-        return res.redirect("users/new");
+        return res.redirect("users/new#repeatedemail");
       }
 
       await user.save()
@@ -32,21 +32,25 @@ const UsersController = {
       
       friendsNames.push(friendFullName);
     }
-    
-    res.render("users/personal-page", { friends: friendsNames.reverse(), targetUser: req.session.user});
-    
+
+    const groupsList = targetUser.groups;
+
+    for (let i = 0 ; i < groupsList.length ; i++) {
+      const group = await User.findOne({ email: groupsList[i] })
+      console.log(group)
+    }
+    res.render("users/personal-page", { friends: friendsNames.reverse(), groups: groupsList.reverse(), targetUser: req.session.user});
+
   },
 
   AddAFriend: (req, res) => {
     res.render("users/alluserspage");
   },
 
-  // NewGroup: (req, res) => {
-  //   res.render("users/createagroup");
-  // },
   NewGroup: (req, res) => {
     res.render("groups/new", {});
   },
+
   CreateGroup: async (req, res) => {
     User.findOne({email: req.session.user.email}, (err, user) => {
       if (err) {
@@ -54,23 +58,44 @@ const UsersController = {
       }
       
       user.groups.push(req.body.groupName);
+      
       user.save((err) => {
         if (err) {
           throw err;
         }
-        res.status(210).redirect("/users/personal-page")
+        res.status(210).redirect("/addfriend/add-friend-to-group")
+      });
+    })
+  },
+  BookDay: async(req,res) => {
+    User.findOne({email: req.session.user.email}, (err, user) => {
+      if (err) {
+        throw err;
+      }
+      
+      user.dateAvailability.push(req.body.dateAvailability);
+      user.save((err) => {
+        if (err) {
+          throw err;
+        }
+        res.status(210).redirect("/users/groups")
       });
     })
   }, 
-  ViewCalendar: (req,res) => {
-    res.render('groups/index')
-  },
-  ViewNextCalendar: (req,res) => {
-    res.render('groups/next-month')
-  },
-  ViewThirdCalendar: (req,res) => {
-    res.render('groups/third-month')
+
+  ViewCalendar: async (req,res) => {
+    const targetUser = req.session.user
+    let group = targetUser.groups[0]
+    let members = []
+
+    User.find({groups: group}, (err, user) => {    
+      user.forEach((member) => {
+        members.push(member.firstName)  
+      })
+    })
+
+    res.render('groups/index', { memberList: members })
   },
 };
 
-module.exports= UsersController;
+module.exports = UsersController;

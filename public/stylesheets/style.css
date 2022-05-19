@@ -277,4 +277,8 @@ li {
 
 #appTitle{
   margin: 0 10px;
+
+#error_box {
+  padding: 5px;
+  margin:  5px; color: rgba(255, 0, 0, 0.765);
 }

@@ -3,7 +3,7 @@
 
 <p>All users:</p>
 <ul reversed class="all-users">
-  {{#each users}}
+  {{#each checkEveryUser}}
   <li>Name: {{this.firstName}} {{this.lastName}}
     <form id="addFriend" action="/addfriend/add" method="post">
       <input type="hidden" id="selectedFriend" name="selectedFriend" value="{{this.email}}">
