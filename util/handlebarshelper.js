@@ -1,4 +1,14 @@
-const hbs = require('hbs')
+const hbs = require("hbs");
+// handlebars helper to check for object presence in array
+hbs.registerHelper("contains", function (value, array, options) {
+    return options[array.includes(value) ? "fn" : "inverse"](this);
+});
+
+hbs.registerHelper("containsId", function (value, array, options) {
+    return options[array.some(x => x.toString() === value.toString()) ? "fn" : "inverse"](this);
+});
+
+
 
 // Using handlebars in script tags does not work without this
 // NO CLUE WHY : (
@@ -6,3 +16,5 @@ const hbs = require('hbs')
 hbs.registerHelper("json", function (v) {
     return JSON.stringify(v);
 });
+
+

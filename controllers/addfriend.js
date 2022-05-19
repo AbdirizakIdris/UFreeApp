@@ -12,8 +12,20 @@ const AddFriendController = {
     
     const leUsers = allUsers.reverse();
     const everyUser = leUsers.filter(element => userChecker(element));
+    let potentialFriends = [];
+    let currentFriends = [];
+    
+    everyUser.forEach(e => {
+      if (!currentUser.friends.includes(e.email)) {
+          potentialFriends.push(e);
+      }
+      else {
+        currentFriends.push(e);
+      }
+    });
 
-    res.render("addfriend/index", {checkEveryUser: everyUser });
+    console.log(currentFriends);
+    res.render("addfriend/index", {checkEveryUser: potentialFriends , currentFriends : currentFriends} );
   },
 
   Add: (req, res) => {
@@ -40,7 +52,7 @@ const AddFriendController = {
             }
 
             user.friends.push(req.session.user.email);
-
+            
             user.save((err) => {
               if (err) {
                 throw err;
