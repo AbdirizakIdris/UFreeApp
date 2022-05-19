@@ -71,7 +71,7 @@ const AddFriendController = {
     res.render("addfriend/add-friend-to-group", { friends: friendsNames.reverse(), friendsEmails: targetUser.friends.reverse(), groupName: targetUser.groups[0] });
   },
 
-  AddFriendToGroup: (req, res) => {
+  AddFriendToGroup: async (req, res) => {
 
     User.findOne({email: req.session.user.email}, (err, user) => {
 
