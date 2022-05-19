@@ -1,13 +1,24 @@
 const User = require("../models/users");
+const util = require("../util/photoHandling");
+const path = require("path");
 
 const UsersController = { 
   New: (req, res) => {
       res.render("users/new", {});
   },
 
-  async Create(req,res) {
+  Create: async (req, res) => {
       const user = new User(req.body);
       const email = req.body.email;
+
+      if (req.files) {
+        console.log("has been called");
+        let photo = req.files.profilePicture;
+        let newName = util.generateName() + "." + util.getExtension(photo.name);
+        photo.mv("./public/upload/" + newName);
+        user.profilePicture = newName;
+      }
+      
       if (req.body.email !== req.body.confirmEmail || req.body.password !== req.body.confirmPassword ){
         return res.redirect("users/new");
       }
@@ -15,7 +26,7 @@ const UsersController = {
         return res.redirect("users/new#repeatedemail");
       }
 
-      await user.save()
+      user.save()
       res.status(210).redirect("/sessions/new")
   },
   Personal: async (req, res) => {
@@ -116,6 +127,28 @@ const UsersController = {
 
     res.render('groups/index', { memberList: members })
   },
+  
+  ProfilePicture: (req, res) => {
+		const loggedInUser = req.session.user;
+
+  
+		User.findOne({ user: loggedInUser }, function (err, user) {
+			// if requesting the user returned an error or didn't return a user at all...
+			if (err || !user) {
+				// ...send back default pf
+				res
+					.status(200)
+					.sendFile(path.join(__dirname, "../public/upload", "default.png"));
+			} else {
+				// otherwise, send back the user's pf
+				res
+					.status(200)
+					.sendFile(
+						path.join(__dirname, "../public/upload", user.profilePicture)
+					);
+			}
+		});
+	}
 };
 
 module.exports = UsersController;

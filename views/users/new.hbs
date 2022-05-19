@@ -2,7 +2,7 @@
   <h1>Welcome to UFree!</h1>
 
   <div class="newUserForm">
-    <form id="new-user-form" action="/users" method="post">
+    <form id="new-user-form" action="/users" method="post" enctype="multipart/form-data">
     <div id="error_box"></div>
     <div class="signup-page-logo-container">
       <img class="signup-page-logo" src="https://cdn.discordapp.com/attachments/974629903435702333/976122683446145054/UFree_logo.png" alt="Ufree Logo">
@@ -21,6 +21,10 @@
       <div>
         <input required id="password" type="password" name="password" value="" placeholder="Password">
         <input required id="confirmPassword" type="password" name="confirmPassword" value="" placeholder="Confirm password">
+      </div>
+      <div>
+        <label id="profile-picture-label" for="uploadButton"><i class="fa-solid fa-upload"></i>Profile Picture</label>
+        <input type="file" name="profilePicture" id="uploadButton" accept="image/*" class="hidden"/>
       </div>
     </div>
       <div>

@@ -1,7 +1,7 @@
 describe("Group Page", () => {
     it("has a calendar", () => {
         cy.visit("/users/groups")
-        cy.get(".cellButton").contains("UFree?")
+        cy.get(".cell").contains("UFree?")
     })
 
     it("has the month of May", () => {
