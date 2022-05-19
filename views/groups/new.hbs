@@ -1,6 +1,22 @@
-<h1>Create a Group</h1>
-<form id="Create-A-Group" class="create-a-group-form" action="/users/personal-page" method="post">
-	<label for="groupName">Group Name</label>
-	<input type="text" name="groupName" id="groupName" value="" placeholder="Enter Group Name...">
-	<input type="submit" value="Create A Group">
-</form>
+<div class="create-group-container">
+	<h2>Create a Group</h2>
+	<div class="createGroupPage">
+		<div class="createGroupForm">
+			<form id="Create-A-Group" class="create-a-group-form" action="/users/personal-page" method="post">
+				<div class="formLabels">
+					<input type="text" name="groupName" id="groupName" value="" placeholder="Group Name">
+				</div>
+				<div>
+					<button type="submit" class="button-56">Create A Group</button>
+				</div>
+			</form>
+		</div>
+	</div>	
+</div>
+
+<div class="authentication-btn">
+  <div class="linkContainer">
+		<button onclick="window.location.href = '/addfriend'">Add a Friend</button>
+    <button onclick="window.location.href = '/users/personal-page'">Back to Personal Page</button>
+  </div>
+</div>  

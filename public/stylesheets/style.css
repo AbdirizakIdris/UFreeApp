@@ -130,7 +130,7 @@ body {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  margin: 40px 25px;
+  margin: 30px 25px;
 }
 
 #submit:hover {
@@ -160,7 +160,7 @@ body {
   display: table-cell;
 }
 
-.newSessionForm .newSessionForm #email, .newSessionForm #password, .newSessionForm #profile_img{
+.newSessionForm #email, .newSessionForm #password, .newSessionForm #profile_img{
   display: table-cell;
 }
 
@@ -188,10 +188,10 @@ body {
   justify-content: space-around;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 60px 100px;
-  /* padding-bottom: 60px; */
   border-radius: 30px;
   max-width: 1000px;
   gap: 100px;
+  text-transform: uppercase;
 }
 
 h1 {
@@ -218,7 +218,6 @@ h3 {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -229,6 +228,10 @@ nav {
   background: rgba(48, 173, 236, 0.266);
   justify-content: space-between;
   align-items: center;
+}
+
+nav a{
+  text-decoration: none;
 }
 
 .logOutContainer form input{
@@ -244,7 +247,7 @@ nav {
   cursor: pointer;
   background-color: #c8602c;
   color: #ffffff;
-  transition: 0.25s linear;
+  transition: 0.25s ease-in;
 }
 
 .links {
@@ -277,8 +280,159 @@ li {
 
 #appTitle{
   margin: 0 10px;
+}
 
 #error_box {
   padding: 5px;
   margin:  5px; color: rgba(255, 0, 0, 0.765);
+}
+
+.button-56 {
+  align-items: center;
+  background-color: rgb(255, 240, 123);
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  height: 30px;
+  justify-content: center;
+  line-height: 15px;
+  max-width: 100%;
+  padding: 0 10px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 30px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: rgb(232, 219, 119);
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
+.addFriendCon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 20px;
+  width: 400px;
+}
+
+.addFriendPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 60px 100px;
+  border-radius: 30px;
+  max-width: 1000px;
+}
+
+.add-friend-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-group-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createGroupPage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.createGroupForm form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+.createGroupForm form div{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.createGroupForm input{
+  width: 100%;
+  padding: 8px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  align-self: center;
+  font-size: large;
+}
+
+.addFriendToGroupPage{
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 60px 100px;
+  border-radius: 30px;
+  max-width: 1000px;
+}
+
+.addFriendToGroupPage td div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 15px;
+}
+
+.addFriendToGroupPage td #friend{
+  text-transform: uppercase;
+  padding: 7px;
+}
+
+.add-friend-to-group-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

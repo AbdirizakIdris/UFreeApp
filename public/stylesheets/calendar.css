@@ -6,38 +6,45 @@ button {
   outline: none;
   padding: 5px;
   border-radius: 5px;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 #header {
   padding: 10px;
-  color: #d36c6c;
+  color: #000000;
   font-size: 26px;
   font-family: sans-serif;
   display: flex;
   justify-content: space-between;
 }
+
 #header button {
-  background-color:#92a1d1;
+  background-color:rgba(255, 250, 99, 0.854);
 }
-#container {
+
+#calContainer {
+  margin: auto;
   width: 770px;
 }
+
 #weekdays {
   width: 100%;
   display: flex;
   color: #247BA0;
 }
+
 #weekdays div {
   width: 100px;
   padding: 10px;
 }
+
 #calendar {
   width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
 }
+
 .day {
   width: 100px;
   padding: 10px;
@@ -51,6 +58,7 @@ button {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .day:hover {
   background-color: #e8faed;
 }
@@ -58,6 +66,7 @@ button {
 .day + #currentDay {
   background-color:#e8f4fa;
 }
+
 .event {
   font-size: 10px;
   padding: 3px;
@@ -69,18 +78,21 @@ button {
 }
 
 .availableName {
-  background: aquamarine;
+  background-color: rgba(251, 133, 0, 0.65);
   text-align: center;
   font-size: 13px;
   margin-bottom: 1px;
   border-width: 1px;
   border-style: solid;
+  border-radius: 7.5px;
 }
+
 .padding {
   cursor: default !important;
   background-color: #FFFCFF !important;
   box-shadow: none !important;
 }
+
 #newEventModal, #deleteEventModal {
   display: none;
   z-index: 20;
@@ -94,6 +106,7 @@ button {
   position: absolute;
   font-family: sans-serif;
 }
+
 #eventTitleInput {
   padding: 10px;
   width: 100%;
@@ -104,18 +117,23 @@ button {
   border: none;
   box-shadow: 0px 0px 3px gray;
 }
+
 #eventTitleInput.error {
   border: 2px solid red;
 }
+
 #cancelButton, #deleteButton {
   background-color: #d36c6c;
 }
+
 #saveButton, #closeButton {
   background-color: #92a1d1;
 }
+
 #eventText {
   font-size: 14px;
 }
+
 #modalBackDrop {
   display: none;
   top: 0px;
@@ -125,4 +143,21 @@ button {
   height: 100vh;
   position: absolute;
   background-color: rgba(0,0,0,0.8);
+}
+
+.calAndGroupCon{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.listMembers{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+#member{
+  margin: 5px 7.5px;
 }
