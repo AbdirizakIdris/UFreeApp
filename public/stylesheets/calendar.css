@@ -67,6 +67,15 @@ button {
   max-height: 55px;
   overflow: hidden;
 }
+
+.availableName {
+  background: aquamarine;
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 1px;
+  border-width: 1px;
+  border-style: solid;
+}
 .padding {
   cursor: default !important;
   background-color: #FFFCFF !important;
