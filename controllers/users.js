@@ -19,27 +19,33 @@ const UsersController = {
       res.status(210).redirect("/sessions/new")
   },
   Personal: async (req, res) => {
-    
+
+    //TODO move this to session checker
+    if (!req.session.user) {
+      res.status(210).redirect("/sessions/new")
+      return;
+    }
+
     const targetUser = await User.findOne({ email: req.session.user.email }); //targetUser = User currently logged in
     let friendsNames = [];
     const friendsList = targetUser.friends;
-    
+
+    let friendAvailability = [];
     for (let i = 0 ; i < friendsList.length ; i++) {
       const friend = await User.findOne({ email: friendsList[i] })
-      
       let friendFullName = `${friend.firstName} ${friend.lastName}`;
-
-      
       friendsNames.push(friendFullName);
+
+      // get the availability for this friend and store it in an object
+      friendAvailability.push({
+        name : friend.firstName,
+        dateAvailability : friend.dateAvailability
+      })
     }
 
     const groupsList = targetUser.groups;
-
-    for (let i = 0 ; i < groupsList.length ; i++) {
-      const group = await User.findOne({ email: groupsList[i] })
-      console.log(group)
-    }
-    res.render("users/personal-page", { friends: friendsNames.reverse(), groups: groupsList.reverse(), targetUser: req.session.user});
+    
+    res.render("users/personal-page", { friends: friendsNames.reverse(), groups: groupsList.reverse(), targetUser: req.session.user, friendAvailability : friendAvailability});
 
   },
 
@@ -52,6 +58,11 @@ const UsersController = {
   },
 
   CreateGroup: async (req, res) => {
+    if (!req.session.user) {
+      res.status(210).redirect("/sessions/new")
+      return;
+    }
+
     User.findOne({email: req.session.user.email}, (err, user) => {
       if (err) {
         throw err;
@@ -68,12 +79,17 @@ const UsersController = {
     })
   },
   BookDay: async(req,res) => {
+    if (!req.session.user) {
+      res.status(210).redirect("/sessions/new")
+      return;
+    }
+
     User.findOne({email: req.session.user.email}, (err, user) => {
       if (err) {
         throw err;
       }
       
-      user.dateAvailability.push(req.body.dateAvailability);
+      user.dateAvailability.push({ title: req.session.user.firstName, date : req.body.dateAvailability});
       user.save((err) => {
         if (err) {
           throw err;
@@ -84,6 +100,10 @@ const UsersController = {
   }, 
 
   ViewCalendar: async (req,res) => {
+    if (!req.session.user) {
+      res.status(210).redirect("/sessions/new")
+      return;
+    }
     const targetUser = req.session.user
     let group = targetUser.groups[0]
     let members = []

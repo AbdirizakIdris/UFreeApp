@@ -22,7 +22,6 @@ function openModal(date) {
     newEventModal.style.display = 'block';
     calDate.innerHTML += `<input type="hidden" name="dateAvailability" id="dateAvailability" value="${date}"/>`
   }
-
   backDrop.style.display = 'block';
 }
 
@@ -61,20 +60,52 @@ function load() {
 
     if (i > paddingDays) {
       daySquare.innerText = i - paddingDays;
+
       const eventForDay = events.find(e => e.date === dayString);
 
-      if (i - paddingDays === day && nav === 0) {
-        daySquare.id = 'currentDay';
-      }
+      // this array will store all the friends available on this day
+      let freeFriends = [];
 
       if (eventForDay) {
-        const eventDiv = document.createElement('div');
-        eventDiv.classList.add('event');
-        eventDiv.innerText = eventForDay.title;
-        daySquare.appendChild(eventDiv);
+        freeFriends.push("You");
       }
+      
+      // for each friend that is free on this day, add them to the list
+      // JSON.parse(x) would convert a string into a json object. For example, 
+      // if x is the string "{name: 'dave', age : 20}" we cannot do x.name. To use x like a JSON
+      // object we must convert it to one using
+
+      // the availability of different friends is stored in the localStorage
+      let friendAvailability = JSON.parse(localStorage.getItem('friendAvailability'))
+      friendAvailability.forEach(e => {
+        let availability = e.dateAvailability;
+            if (availability.find(x => x.date === dayString)) {
+              freeFriends.push(e.name);
+            }
+       
+      });
+      
+      if (i - paddingDays === day && nav === 0) {
+        daySquare.id = 'currentDay';
+        }
+
+        // for each free friend we will create a div and put their name inside
+        // We will then add this friend to the daySquare div
+        let freeDiv;
+        if (freeFriends.length > 0 ) {
+          freeDiv = document.createElement('div');
+          freeFriends.forEach(element => {
+            let nameDiv = document.createElement('div');
+            nameDiv.className = "availableName",
+            nameDiv.innerText = element;
+            freeDiv.appendChild(nameDiv);
+          });
+
+          daySquare.appendChild(freeDiv);
+        }
 
       daySquare.addEventListener('click', () => openModal(dayString));
+
     } else {
       daySquare.classList.add('padding');
     }
@@ -99,7 +130,7 @@ function saveEvent() {
 
     events.push({
       date: clicked,
-      title: eventTitleInput.value,
+      title: 'YOU ',
     });
 
     localStorage.setItem('events', JSON.stringify(events));

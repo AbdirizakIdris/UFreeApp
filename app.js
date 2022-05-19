@@ -11,6 +11,8 @@ const usersRouter = require("./routes/users");
 const sessionsRouter = require("./routes/sessions")
 const addFriendRouter = require("./routes/addfriend")
 
+//const sessionChecker = require("./util/sessionchecker");
+
 require("./util/handlebarshelper")
 
 const app = express()

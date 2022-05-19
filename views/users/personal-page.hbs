@@ -6,6 +6,12 @@
     <h2>Your personal page</h2>
   </div>
 
+  <h1 id="userName" class="userName">{{targetUser.firstName}} {{targetUser.lastName}}</h1>
+    
+  {{!-- <img class="profile-pic" src="{{dataImage targetUser.img}}" alt="profile picture"/> --}}
+<div>
+
+
   <div class="friendsAndGroup">
     <div class="friendsContainer">
       <h3>Your Friends</h3>
@@ -34,3 +40,24 @@
     </div>
   </div>
 </div>
+
+<script> 
+
+    // get the users and friends using handlebar syntax
+    const user = JSON.parse('{{{ json targetUser }}}');
+    const friendAvailability = JSON.parse('{{{ json friendAvailability }}}');
+
+
+    // TODO here I use the json helper to convert the objects passed to the template 
+    // into strings. I then use json.parse to convert them back to json on line 6 and 7.
+    // Finally, I use JSON.stringify to convert it back to a string on lines 18 and 19. As you
+    // can tell this makes no sense but this code returns [Object Object] if we don't do this.
+    // The fix might be to use another out of the box helper instead of json
+
+    // we can remove any previously save events in the calender. Incase, someone else was signed into this browser
+    localStorage.clear(); 
+    // Store string of events and friends availability to be later used in the script.js 
+    // to display the calender
+    localStorage.setItem('events', JSON.stringify(user.dateAvailability));
+    localStorage.setItem('friendAvailability', JSON.stringify(friendAvailability));
+</script>
