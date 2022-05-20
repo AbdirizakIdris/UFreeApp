@@ -2,31 +2,12 @@
   <h2>Add your friends!</h2>
 
 <h2>Potential Friends:</h2>
-<ul reversed class="all-users">
-  {{#each checkEveryUser}}
-  <li>Name: {{this.firstName}} {{this.lastName}}
-    <form id="addFriend" class="addNewFriend" action="/addfriend/add" method="post">
-      <input type="hidden" id="selectedFriend" name="selectedFriend" value="{{this.email}}">
-      <input onclick="this.value='Added'" type="submit" value="Add friend">
-      {{!-- <input type="hidden" type="submit" value="Add Friend"> --}}
-    </form>
-  </li>
-  {{/each}}
-</ul>
-
-<h2> Current friends </h2>
-<ul reversed class="all-users">
-  {{#each currentFriends}}
-  <li>Name: {{this.firstName}} {{this.lastName}} </li>
-  {{/each}}
-</ul>
-
-  <div class="addFriendPage">
+<div class="addFriendPage">
     <ul reversed class="all-users">
       {{#each checkEveryUser}}
       <div class="addFriendCon">
         <li>{{this.firstName}} {{this.lastName}}</li>
-        <form id="addFriend" action="/addfriend/add" method="post">
+        <form id="addFriend" class="addNewFriend" action="/addfriend/add" method="post">
           <input type="hidden" id="selectedFriend" name="selectedFriend" value="{{this.email}}">
           <div>
             <button type="submit" class="button-56">Add Friend</button>
@@ -36,6 +17,13 @@
       {{/each}}
     </ul>
   </div>
+
+<h2> Current friends </h2>
+<ul reversed class="all-users">
+  {{#each currentFriends}}
+  <li>Name: {{this.firstName}} {{this.lastName}} </li>
+  {{/each}}
+</ul>
 
   <div class="linkContainer">
     <div class="authentication-btn">
@@ -50,7 +38,7 @@
   let addForms = document.getElementsByClassName('addNewFriend');
   for(let i = 0; i < addForms.length; i++){
     let form = addForms[i];
-   form.addEventListener('submit',function (e){
+    form.addEventListener('submit',function (e){
 
         // get the current list of friends from local storage
         let storedFriends = localStorage.getItem('newFriends');
@@ -63,18 +51,18 @@
         }
         else
         {
-           storedFriends = JSON.parse(storedFriends);
+          storedFriends = JSON.parse(storedFriends);
 
            // check if the user has already been added
-           if (storedFriends.includes(friendEmail))
-           {
-             alert('You are already friends')
-           }
-           else{
+          if (storedFriends.includes(friendEmail))
+          {
+            alert('You are already friends')
+          }
+          else{
             storedFriends.push(friendEmail);
             localStorage.setItem('newFriends',JSON.stringify(storedFriends));
-           }
-         
+          }
+        
         }
 
     })
